@@ -1,0 +1,384 @@
+/* I used cream, peach and muted colours feel calmer than a commercial music app.
+   CSS variables change each atmosphere while the familiar layout stays consistent. */
+/* font styles */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+h2,
+h3,
+.logo,
+.mood-card strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.intro {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button,
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* basic page styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: #3f392d;
+  background: linear-gradient(
+    135deg,
+    #ffe2cf,
+    #f3a9b5,
+    #fff0a9
+  );
+}
+
+button,
+input {
+  font: inherit;
+}
+
+
+/* different music backgrounds */
+
+body.morning-theme {
+  color: #3f392d;
+  background: linear-gradient(
+    135deg,
+    #ffe2cf,
+    #ef9aab,
+    #fff0a9
+  );
+}
+
+body.study-theme {
+  color: #393c31;
+  background: linear-gradient(
+    135deg,
+    #f4eedc,
+    #b7b99a,
+    #8e9a78
+  );
+}
+
+body.night-theme {
+  color: #fff4dc;
+  background: linear-gradient(
+    135deg,
+    #172a4b,
+    #765b7a,
+    #d783ac
+  );
+}
+
+
+/* header */
+
+.site-header {
+  width: 90%;
+  max-width: 1180px;
+  margin: auto;
+  padding: 24px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid rgba(80, 70, 60, 0.4);
+}
+
+.logo {
+  color: inherit;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 24px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* first section */
+
+.hero {
+  width: 90%;
+  max-width: 1180px;
+  min-height: calc(100vh - 78px);
+  margin: auto;
+  padding: 60px 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 64px;
+}
+
+.intro {
+  max-width: 450px;
+  line-height: 1.6;
+}
+
+
+/* buttons */
+
+button {
+  padding: 10px 16px;
+
+  border: 1px solid #85525a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.surprise-button {
+  margin-top: 20px;
+  color: white;
+  background-color: #c97883;
+}
+
+
+/* player */
+
+.media-player {
+  padding: 32px;
+
+  color: #3f392d;
+  background-color: rgba(255, 250, 240, 0.9);
+
+  border: 1px solid #a99369;
+  border-radius: 12px;
+}
+
+body.night-theme .media-player {
+  color: #fff4dc;
+  background-color: rgba(74, 75, 96, 0.9);
+}
+
+.now-playing,
+.time-row,
+.extra-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  margin: 10px 0 24px;
+
+  background-color: #eee4cf;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+
+  background-color: #c97883;
+  border-radius: 10px;
+}
+
+.main-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.extra-controls {
+  margin-top: 24px;
+}
+
+.player-feedback {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* atmosphere section */
+
+.atmospheres {
+  width: 84%;
+  margin: auto;
+  padding: 80px 0;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mood-card {
+  padding: 20px;
+  text-align: left;
+
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.35);
+
+  border: 1px solid rgba(80, 70, 60, 0.4);
+  border-radius: 10px;
+}
+
+.card-art {
+  display: block;
+  height: 140px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.morning-art {
+  background: linear-gradient(
+    135deg,
+    #ffe2cf,
+    #ef9aab,
+    #fff0a9
+  );
+}
+
+.study-art {
+  background: linear-gradient(
+    135deg,
+    #f4eedc,
+    #b7b99a,
+    #8e9a78
+  );
+}
+
+.night-art {
+  background: linear-gradient(
+    135deg,
+    #172a4b,
+    #765b7a,
+    #d783ac
+  );
+}
+
+
+/* footer */
+
+footer {
+  width: 84%;
+  margin: auto;
+  padding: 40px 0;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+
+/* mobile layout */
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .mood-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
+
+/* player buttons */
+
+.main-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon-button {
+  width: 45px;
+  height: 45px;
+  padding: 8px;
+}
+
+.play-button {
+  width: 55px;
+  height: 55px;
+  padding: 10px;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.play-button img {
+  width: 28px;
+  height: 28px;
+}
+
+
+/* volume and repeat buttons */
+
+.text-button {
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+}
+
+.text-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/*hover*/
+nav a:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.mood-card.active {
+  background-color: rgba(255, 255, 255, 0.6);
+}
