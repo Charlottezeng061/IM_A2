@@ -1,6 +1,10 @@
 /* I used cream, peach and muted colours feel calmer than a commercial music app.
    CSS variables change each atmosphere while the familiar layout stays consistent. */
+
 /* font styles */
+/* I used Arial for body text and controls because it is simple and easy to read.
+  Georgia gives the headings a warmer feeling. The two fonts also create a clear
+  difference between headings and supporting information. */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -62,6 +66,10 @@ input {
 
 
 /* different music backgrounds */
+/* Each body class belongs to one music atmosphere. JavaScript changes the class
+  when a track is selected. I kept the same gradient direction so the colours
+  change while the website still feels connected.
+  Source: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient */
 
 body.morning-theme {
   color: #3f392d;
@@ -95,6 +103,8 @@ body.night-theme {
 
 
 /* header */
+/* Flexbox places the logo on the left and navigation on the right. The header
+  uses the same width as the main content so their edges stay aligned. */
 
 .site-header {
   width: 90%;
@@ -131,6 +141,8 @@ nav a {
 
 
 /* first section */
+/* The hero fills most of the first screen. Grid gives more room to the player
+  because listening is the main activity. It becomes one column on mobile. */
 
 .hero {
   width: 90%;
@@ -174,6 +186,8 @@ button {
 
 
 /* player */
+/* The light player background keeps the controls readable over each gradient.
+  A simple border and rounded corners create a warm, relaxing atmosphere. */
 
 .media-player {
   width: 100%;
@@ -210,11 +224,13 @@ body.night-theme .media-player {
   cursor: pointer;
 }
 
+/* JavaScript changes this width while audio plays. This gives users immediate
+   feedback about their position in the track. */
+
 #progress-fill {
   display: block;
   width: 0;
   height: 100%;
-
   background-color: #c97883;
   border-radius: 10px;
 }
@@ -243,6 +259,8 @@ body.night-theme .media-player {
 }
 
 /* atmosphere section */
+/* This expands the additional-content area from the original exercise. The three
+  cards make the music choices easy to compare. */
 
 .atmospheres {
   width: 90%;
@@ -283,14 +301,14 @@ body.night-theme .media-player {
   gap: 24px;
 }
 
+/* Each card is a button, so clicking anywhere inside selects that atmosphere. */
+
 .mood-card {
   position: relative;
   padding: 20px;
   text-align: left;
-
   color: inherit;
   background-color: rgba(255, 255, 255, 0.35);
-
   border: 1px solid rgba(80, 70, 60, 0.4);
   border-radius: 10px;
 }
@@ -332,19 +350,63 @@ body.night-theme .media-player {
 
 
 /* footer */
+/* The maintenance credit stays on the left and sources stay on the right. The
+  transparent colour lets the current mood remain visible behind the footer.
+  Rainy Night uses lighter text because its background is darker. */
 
 footer {
-  width: 84%;
-  margin: auto;
-  padding: 40px 0;
-
+  width: 100%;
+  margin-top: 90px;
+  padding: 55px 8%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 40px;
+
+  color: #3f392d;
+  background-color: rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(80, 70, 60, 0.3);
+}
+.maintained-by {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.maintained-by a {
+  display: block;
+  color: inherit;
+}
+
+.credit-list {
+  max-width: 470px;
+}
+
+.credit-list p {
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.credit-list a {
+  color: inherit;
+}
+
+body.night-theme footer {
+  color: #fff4dc;
+  background-color: rgba(23, 42, 75, 0.3);
 }
 
 
 /* mobile layout */
+/*
+I learned how to use media queries from the MDN media query tutorial.
+I used max-width: 700px to apply a different layout when the browser
+becomes narrow. The hero and mood cards change from multiple columns
+to one column, and the footer content stacks vertically. This keeps
+the text and player controls readable on mobile screens.
+
+Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries
+*/
 
 @media (max-width: 700px) {
   .hero {

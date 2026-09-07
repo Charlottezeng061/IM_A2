@@ -68,6 +68,9 @@ let repeatIsOn = false;
 
 
 // Show a small message under the player
+// I added this feedback because an icon button does not always show whether an
+// action worked. Changing one short sentence confirms play, mute and repeat
+// actions without adding a pop-up that would interrupt the calm experience.
 function showFeedback(message) {
   playerFeedback.textContent = message;
 }
@@ -101,8 +104,11 @@ function updateMoodCards() {
   });
 }
 
-
 // Load a selected track
+// This function is reused by the mood cards, next and previous controls and the
+// random feature. It changes the audio source, visible information and body class
+// together, so the sound and colour theme always match.
+
 function loadTrack(trackIndex) {
   currentTrack = trackIndex;
 
@@ -176,6 +182,10 @@ function previousTrack() {
 
 
 // Choose a random atmosphere
+// I chose random atmosphere as the extra feature because users studying or
+// relaxing may not want to spend time choosing a track. Math.random creates a
+// random value and Math.floor changes it into an array position.
+// Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function randomAtmosphere() {
   let randomTrack =
     Math.floor(Math.random() * tracks.length);
@@ -214,12 +224,14 @@ surpriseButton.addEventListener(
 
 
 // Change the play icon when music starts
+// The audio play and pause events update both the icon and the is-playing class.
+// This gives visual feedback and lets the CSS background move with the music.
+// Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play_event
+
 audio.addEventListener("play", function () {
   playIcon.src = "assets/icon/pause.png";
   playIcon.alt = "Pause";
-
   playButton.setAttribute("aria-label", "Pause");
-
   document.body.classList.add("is-playing");
 });
 
@@ -228,9 +240,7 @@ audio.addEventListener("play", function () {
 audio.addEventListener("pause", function () {
   playIcon.src = "assets/icon/play.png";
   playIcon.alt = "Play";
-
   playButton.setAttribute("aria-label", "Play");
-
   document.body.classList.remove("is-playing");
 });
 
@@ -260,6 +270,10 @@ muteButton.addEventListener("click", function () {
 
 
 // Change the volume
+// The range input gives a value between 0 and 1, which matches the audio volume
+// property. Moving the slider also turns mute off so the new volume can be heard.
+// Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volume
+
 volumeSlider.addEventListener("input", function () {
   audio.volume = volumeSlider.value;
 
@@ -306,6 +320,10 @@ audio.addEventListener("loadedmetadata", function () {
 
 
 // Update the time and progress bar
+// The timeupdate event runs while the track plays. I divide currentTime by the
+// full duration to calculate a percentage, then use it as the fill width.
+// Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/timeupdate_event
+
 audio.addEventListener("timeupdate", function () {
   currentTimeText.textContent =
     formatTime(audio.currentTime);
@@ -347,8 +365,10 @@ audio.addEventListener("ended", function () {
   }
 });
 
-
 // Make each mood card clickable
+// Each card stores its track number. Number changes that stored text
+// into a number before loadTrack uses it as an array position.
+
 moodCards.forEach(function (card) {
   card.addEventListener("click", function () {
     const selectedTrack =
