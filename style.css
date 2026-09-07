@@ -134,13 +134,13 @@ nav a {
 
 .hero {
   width: 90%;
-  max-width: 1180px;
+  max-width: 1300px;
   min-height: calc(100vh - 78px);
   margin: auto;
   padding: 60px 0;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 60px;
   align-items: center;
 }
@@ -176,7 +176,9 @@ button {
 /* player */
 
 .media-player {
-  padding: 32px;
+  width: 100%;
+  min-height: 390px;
+  padding: 38px 40px;
 
   color: #3f392d;
   background-color: rgba(255, 250, 240, 0.9);
@@ -224,7 +226,14 @@ body.night-theme .media-player {
 }
 
 .extra-controls {
-  margin-top: 24px;
+   margin-top: 34px;
+  padding-top: 24px;
+  gap: 15px;
+  border-top: 1px solid #a99369;
+}
+
+#volume-slider {
+  accent-color: #9a6b2f;
 }
 
 .player-feedback {
@@ -324,50 +333,82 @@ footer {
   footer {
     flex-direction: column;
   }
+  .media-player {
+    min-height: 0;
+    padding: 25px;
+  }
+
+  .extra-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 /* player buttons */
 
 .main-controls {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 15px;
 }
 
 .icon-button {
-  width: 45px;
-  height: 45px;
-  padding: 8px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 50%;
 }
 
 .play-button {
-  width: 55px;
-  height: 55px;
-  padding: 10px;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  background-color: #3f392d;
+  border-color: #3f392d;
+  border-radius: 50%;
+}
+
+.icon-button,
+.play-button,
+.text-button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-button img {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .play-button img {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
 }
 
 
 /* volume and repeat buttons */
 
 .text-button {
-  width: 40px;
-  height: 40px;
-  padding: 7px;
+  width: auto;
+  height: 36px;
+  padding: 0 12px;
+  background-color: transparent;
+  border-radius: 20px;
+  gap: 6px;
 }
 
 .text-button img {
-  width: 24px;
-  height: 24px;
+    width: 18px;
+  height: 18px;
+}
+
+.text-button span {
+  white-space: nowrap;
+  font-size: 13px;
 }
 
 /*hover*/
@@ -377,6 +418,11 @@ nav a:hover {
 
 button:hover {
   opacity: 0.8;
+}
+
+.icon-button:hover,
+.text-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .mood-card.active {
