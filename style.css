@@ -245,18 +245,46 @@ body.night-theme .media-player {
 /* atmosphere section */
 
 .atmospheres {
-  width: 84%;
+  width: 90%;
+  max-width: 1300px;
   margin: auto;
-  padding: 80px 0;
+  padding: 90px 0 50px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 58px;
+  line-height: 1;
+}
+
+.section-heading > p {
+  max-width: 330px;
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .mood-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
 .mood-card {
+  position: relative;
   padding: 20px;
   text-align: left;
 
@@ -266,6 +294,7 @@ body.night-theme .media-player {
   border: 1px solid rgba(80, 70, 60, 0.4);
   border-radius: 10px;
 }
+
 
 .card-art {
   display: block;

@@ -9,7 +9,7 @@ const tracks = [
     mood: "Warm Morning",
     file: "slow morning.mp3",
     description:
-      "A gentle soundtrack for slow mornings and quiet reading.",
+     "Ease into the day with soft and unhurried sounds.",
     theme: "morning-theme"
   },
 
@@ -17,7 +17,7 @@ const tracks = [
     mood: "Cozy Study",
     file: "lofi study.mp3",
     description:
-      "Soft beats for studying, writing and staying focused.",
+       "Gentle beats to help you read, write and stay focused.",
     theme: "study-theme"
   },
 
