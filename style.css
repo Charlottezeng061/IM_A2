@@ -20,8 +20,7 @@ h1 {
 
 h2,
 h3,
-.logo,
-.mood-card strong {
+.logo {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 600;
   font-style: normal;
@@ -39,6 +38,11 @@ input {
   font-weight: 400;
   font-style: normal;
 }
+
+.now-playing h2 {
+  margin-bottom: 6px;
+}
+
 
 /* basic page styles */
 
@@ -178,7 +182,7 @@ button {
   cursor: pointer;
 }
 
-.surprise-button {
+.random-button {
   margin-top: 20px;
   color: white;
   background-color: #c97883;
@@ -244,108 +248,19 @@ body.night-theme .media-player {
 .extra-controls {
    margin-top: 34px;
   padding-top: 24px;
-  gap: 15px;
+  gap: 8px;
   border-top: 1px solid #a99369;
 }
 
 #volume-slider {
   accent-color: #9a6b2f;
+  margin-left: -150px;
 }
 
 .player-feedback {
   margin-top: 15px;
   font-size: 12px;
   text-align: center;
-}
-
-/* atmosphere section */
-/* This expands the additional-content area from the original exercise. The three
-  cards make the music choices easy to compare. */
-
-.atmospheres {
-  width: 90%;
-  max-width: 1300px;
-  margin: auto;
-  padding: 90px 0 50px;
-}
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-  margin-bottom: 45px;
-}
-
-.section-heading h2 {
-  margin: 0;
-  font-size: 58px;
-  line-height: 1;
-}
-
-.section-heading > p {
-  max-width: 330px;
-  margin-bottom: 5px;
-  line-height: 1.6;
-}
-
-.eyebrow {
-  margin-bottom: 18px;
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.mood-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Each card is a button, so clicking anywhere inside selects that atmosphere. */
-
-.mood-card {
-  position: relative;
-  padding: 20px;
-  text-align: left;
-  color: inherit;
-  background-color: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(80, 70, 60, 0.4);
-  border-radius: 10px;
-}
-
-
-.card-art {
-  display: block;
-  height: 140px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-}
-
-.morning-art {
-  background: linear-gradient(
-    135deg,
-    #ffe2cf,
-    #ef9aab,
-    #fff0a9
-  );
-}
-
-.study-art {
-  background: linear-gradient(
-    135deg,
-    #f4eedc,
-    #b7b99a,
-    #8e9a78
-  );
-}
-
-.night-art {
-  background: linear-gradient(
-    135deg,
-    #172a4b,
-    #765b7a,
-    #d783ac
-  );
 }
 
 
@@ -413,10 +328,6 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
     grid-template-columns: 1fr;
   }
 
-  .mood-grid {
-    grid-template-columns: 1fr;
-  }
-
   h1 {
     font-size: 42px;
   }
@@ -432,6 +343,9 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   .extra-controls {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  #volume-slider {
+    margin-left: 0;
   }
 }
 
@@ -514,8 +428,4 @@ button:hover {
 .icon-button:hover,
 .text-button:hover {
   background-color: rgba(255, 255, 255, 0.4);
-}
-
-.mood-card.active {
-  background-color: rgba(255, 255, 255, 0.6);
 }

@@ -35,28 +35,35 @@ const tracks = [
 const audio = document.querySelector("#audio-player");
 
 const moodName = document.querySelector("#mood-name");
+
 const moodDescription = document.querySelector("#mood-description");
-const trackNumber = document.querySelector("#track-number");
 
 const playButton = document.querySelector("#play-button");
+
 const playIcon = document.querySelector("#play-icon");
 
 const previousButton = document.querySelector("#previous-button");
+
 const nextButton = document.querySelector("#next-button");
 
 const muteButton = document.querySelector("#mute-button");
+
 const muteIcon = document.querySelector("#mute-icon");
 
 const repeatButton = document.querySelector("#repeat-button");
+
 const volumeSlider = document.querySelector("#volume-slider");
 
 const progressBar = document.querySelector("#progress-bar");
+
 const progressFill = document.querySelector("#progress-fill");
 
 const currentTimeText = document.querySelector("#current-time");
+
 const durationText = document.querySelector("#duration");
 
-const surpriseButton = document.querySelector("#surprise-button");
+const randomButton = document.querySelector("#random-button");
+
 const playerFeedback = document.querySelector("#player-feedback");
 
 const moodCards = document.querySelectorAll(".mood-card");
@@ -97,16 +104,6 @@ function formatTime(time) {
 }
 
 
-// Highlight the selected mood card
-function updateMoodCards() {
-  moodCards.forEach(function (card, index) {
-    if (index === currentTrack) {
-      card.classList.add("active");
-    } else {
-      card.classList.remove("active");
-    }
-  });
-}
 
 // Load a selected track
 // This function is reused by the mood cards, next and previous controls and the
@@ -123,9 +120,6 @@ function loadTrack(trackIndex) {
   moodName.textContent = selectedTrack.mood;
   moodDescription.textContent = selectedTrack.description;
 
-  trackNumber.textContent =
-    "0" + (currentTrack + 1) + " / 03";
-
   // Remove the old theme before adding the new one
   document.body.classList.remove(
     "morning-theme",
@@ -138,8 +132,6 @@ function loadTrack(trackIndex) {
   progressFill.style.width = "0%";
   currentTimeText.textContent = "0:00";
   durationText.textContent = "0:00";
-
-  updateMoodCards();
 }
 
 
@@ -221,7 +213,7 @@ nextButton.addEventListener("click", nextTrack);
 
 
 // Surprise Me button
-surpriseButton.addEventListener(
+randomButton.addEventListener(
   "click",
   randomAtmosphere
 );
@@ -373,7 +365,6 @@ progressBar.addEventListener("click", function (event) {
   }
 });
 
-
 // Move to the next song when the current song finishes
 /*
 I learned about the ended event from the MDN HTMLMediaElement
@@ -389,25 +380,6 @@ audio.addEventListener("ended", function () {
   }
 });
 
-// Make each mood card clickable
-// Each card stores its track number. Number changes that stored text
-// into a number before loadTrack uses it as an array position.
-
-moodCards.forEach(function (card) {
-  card.addEventListener("click", function () {
-    const selectedTrack =
-      Number(card.dataset.track);
-
-    loadTrack(selectedTrack);
-    audio.play();
-
-    showFeedback(
-      "Selected " +
-      tracks[selectedTrack].mood +
-      "."
-    );
-  });
-});
 
 // Set the starting volume
 audio.volume = volumeSlider.value;

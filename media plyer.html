@@ -40,7 +40,7 @@
     <!-- Header Section -->
     <header class="site-header">
       <a class="logo" href="#home">
-        Slow Moments<span>.</span>
+        Slow Moments
       </a>
 
       <!-- Navigation Section -->
@@ -61,19 +61,18 @@
     <main id="home">
       <section class="hero">
         <div class="hero-copy">
-          <h1>Take a slower moment.</h1>
+          <h1>Take it slow with music.</h1>
 
           <p class="intro">
-            Choose a gentle atmosphere for studying, reading or
-            simply taking a breath.
+            Choose a mood for studying, reading or relaxing.
           </p>
 
           <button
-            class="surprise-button"
-            id="surprise-button"
+            class="random-button"
+            id="random-button"
             type="button"
           >
-            Change the Mood
+            Random Mood
           </button>
         </div>
 
@@ -94,10 +93,6 @@
             <div>
               <h2 id="mood-name">Warm Morning</h2>
             </div>
-
-            <span class="track-number" id="track-number">
-              01 / 03
-            </span>
           </div>
 
           <p
@@ -219,97 +214,6 @@
             Ready when you are.
           </p>
         </article>
-      </section>
-
-      <!-- Additional Content Section -->
-      <!--
-        I changed the original additional-content area into three
-        mood cards. This lets users select a study atmosphere
-        directly.
-
-        Change the Mood supports the relaxation context by making the
-        choice for users who do not want to interrupt their activity.
-        Both options change the music, description and page colours,
-        so the result of each selection is easy to notice.
-      -->
-
-      <section
-        class="atmospheres"
-        id="playlists"
-       aria-labelledby="atmosphere-heading"
-       >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">
-              Sounds for slow moments
-            </p>
-
-            <h2 id="atmosphere-heading">
-              Pick your atmosphere
-            </h2>
-          </div>
-
-          <p>
-            Each mood changes the music, colours and feeling
-            of the page.
-          </p>
-        </div>
-
-        <div class="mood-grid">
-          <button
-            class="mood-card active"
-            data-track="0"
-            type="button"
-          >
-            <span class="card-number">01</span>
-
-            <span
-              class="card-art morning-art"
-              aria-hidden="true"
-            >
-              <i></i>
-            </span>
-
-              <strong class="card-title">Warm Morning</strong>
-            <span class="card-description">Soft sounds for a peaceful start.</span>
-          </button>
-
-          <button
-            class="mood-card"
-            data-track="1"
-            type="button"
-          >
-            <span class="card-number">02</span>
-
-            <span
-              class="card-art study-art"
-              aria-hidden="true"
-            >
-              <i></i>
-            </span>
-
-            <strong class="card-title">Cozy Study</strong>
-            <span class="card-description">Soft beats for gentle focus.</span>
-          </button>
-
-          <button
-            class="mood-card"
-            data-track="2"
-            type="button"
-          >
-            <span class="card-number">03</span>
-
-            <span
-              class="card-art night-art"
-              aria-hidden="true"
-            >
-              <i></i>
-            </span>
-
-             <strong class="card-title">Rainy Night</strong>
-            <span class="card-description">Quiet sounds for a slower evening.</span>
-          </button>
-        </div>
       </section>
     </main>
 
