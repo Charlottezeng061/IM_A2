@@ -68,13 +68,17 @@ let repeatIsOn = false;
 
 
 // Show a small message under the player
-// I added this feedback because an icon button does not always show whether an
-// action worked. Changing one short sentence confirms play, mute and repeat
-// actions without adding a pop-up that would interrupt the calm experience.
+// I added this feedback because an icon button does not always show whether an action worked.
+// Changing one short sentence confirms play, mute and repeat actions without adding a pop-up 
+// that would interrupt the calm experience.
+// The HTML creates the place for the message, CSS controls its appearance, and this function changes
+// its words. Each player action calls showFeedback with a different message. I used textContent because
+// the feedback is plain text.
+// Source: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+
 function showFeedback(message) {
   playerFeedback.textContent = message;
 }
-
 
 // Change seconds into minutes and seconds
 function formatTime(time) {
@@ -343,6 +347,18 @@ audio.addEventListener("timeupdate", function () {
 
 
 // Click the progress bar to move through the track
+/*
+ I used offsetX to find where the user clicked inside the progress
+bar. I divided this position by the full offsetWidth of the bar to
+create a value between 0 and 1. Multiplying this value by the audio
+duration gives the new playback time. I then applied the result to
+audio.currentTime so the user can move through the track.
+Sources:
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
+*/
+
 progressBar.addEventListener("click", function (event) {
   if (audio.duration) {
     const clickedPosition =
@@ -359,6 +375,14 @@ progressBar.addEventListener("click", function (event) {
 
 
 // Move to the next song when the current song finishes
+/*
+I learned about the ended event from the MDN HTMLMediaElement
+documentation. This event runs when the current audio reaches the
+end. If repeat is false, I call the existing nextTrack function so
+the player automatically continues to the next atmosphere.
+Source:https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/ended_event
+*/
+
 audio.addEventListener("ended", function () {
   if (repeatIsOn === false) {
     nextTrack();
@@ -384,7 +408,6 @@ moodCards.forEach(function (card) {
     );
   });
 });
-
 
 // Set the starting volume
 audio.volume = volumeSlider.value;
