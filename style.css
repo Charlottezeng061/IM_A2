@@ -105,7 +105,6 @@ body.night-theme {
   );
 }
 
-
 /* header */
 /* Flexbox places the logo on the left and navigation on the right. The header
   uses the same width as the main content so their edges stay aligned. */
@@ -170,7 +169,9 @@ h1 {
   max-width: 450px;
   line-height: 1.6;
 }
-
+.hero-copy {
+  margin-left: 40px;
+}
 
 /* buttons */
 
@@ -263,7 +264,6 @@ body.night-theme .media-player {
   text-align: center;
 }
 
-
 /* footer */
 /* The maintenance credit stays on the left and sources stay on the right. The
   transparent colour lets the current mood remain visible behind the footer.
@@ -311,7 +311,6 @@ body.night-theme footer {
   background-color: rgba(23, 42, 75, 0.3);
 }
 
-
 /* mobile layout */
 /*
 I learned how to use media queries from the MDN media query tutorial.
@@ -347,6 +346,9 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   #volume-slider {
     margin-left: 0;
   }
+  .hero-copy {
+  margin-left: 0;
+}
 }
 
 /* player buttons */
