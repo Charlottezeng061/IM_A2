@@ -346,9 +346,7 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   #volume-slider {
     margin-left: 0;
   }
-  .hero-copy {
-  margin-left: 0;
-}
+  
 }
 
 /* player buttons */
@@ -372,7 +370,7 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   width: 54px;
   height: 54px;
   padding: 0;
-  background-color: #3f392d;
+  background-color: #c7a57f;
   border-color: #3f392d;
   border-radius: 50%;
 }
