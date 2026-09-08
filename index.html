@@ -90,18 +90,17 @@
             </div>
           </div>
 
-          <p
-            class="mood-description"
-            id="mood-description"
-          >
+          <p class="mood-description" id="mood-description">
             Ease into the day with soft and unhurried sounds.
           </p>
 
-          <audio
-            id="audio-player"
-            src="assets/audio/slow morning.mp3"
-            preload="metadata"
-          ></audio>
+           <!--
+           I use one audio element for all three tracks. The first track is
+           loaded here, then JavaScript changes the audio source when another
+           track is selected. This means the same player controls can be used
+           for every track.
+           -->
+          <audio id="audio-player" src="assets/audio/slow morning.mp3" preload="metadata"  ></audio>
 
           <!-- Track time -->
           <div class="time-row">

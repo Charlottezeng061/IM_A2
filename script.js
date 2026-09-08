@@ -1,9 +1,16 @@
-// I stored each atmosphere as one object in an array. Keeping its filename,
-// description and theme together means loadTrack can update the whole player
-// without repeating a separate set of instructions for every song.
+// I put the three tracks into one array so I can control them with
+// the same code instead of writing separate code for each song.
+// currentTrack stores which track is selected, and loadTrack()
+// changes the audio source to that track's file. Then audio.play()
+// starts playing it. The previous, next and random buttons all use
+// this same track system.
+// Sources:
+// https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/src
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
 
 
-// Information about the three music tracks
+// the three music tracks
 const tracks = [
   {
     mood: "Warm Morning",
@@ -212,7 +219,7 @@ previousButton.addEventListener("click", previousTrack);
 nextButton.addEventListener("click", nextTrack);
 
 
-// Surprise Me button
+// Random button
 randomButton.addEventListener(
   "click",
   randomAtmosphere
@@ -291,6 +298,9 @@ volumeSlider.addEventListener("input", function () {
 
 
 // Turn repeat on and off
+// Sources:
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loop
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed
 repeatButton.addEventListener("click", function () {
   repeatIsOn = !repeatIsOn;
   audio.loop = repeatIsOn;
