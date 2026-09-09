@@ -12,29 +12,20 @@
 
 // the three music tracks
 const tracks = [
-  {
-    mood: "Warm Morning",
+  { mood: "Warm Morning",
     file: "slow morning.mp3",
-    description:
-     "Ease into the day with soft and unhurried sounds.",
-    theme: "morning-theme"
-  },
+    description: "Ease into the day with soft and unhurried sounds.",
+    theme: "morning-theme"},
 
-  {
-    mood: "Cozy Study",
+  { mood: "Cozy Study",
     file: "lofi study.mp3",
-    description:
-       "Gentle beats to help you read, write and stay focused.",
-    theme: "study-theme"
-  },
+    description: "Gentle beats to help you read, write and stay focused.",
+    theme: "study-theme"},
 
-  {
-    mood: "Rainy Night",
+  { mood: "Rainy Night",
     file: "lofi night.mp3",
-    description:
-      "A calm evening atmosphere for late-night study.",
-    theme: "night-theme"
-  }
+    description: "A calm evening atmosphere for late-night study.",
+    theme: "night-theme"}
 ];
 
 
@@ -96,17 +87,11 @@ function showFeedback(message) {
 
 // Change seconds into minutes and seconds
 function formatTime(time) {
-  if (isNaN(time)) {
-    return "0:00";
-  }
-
+  if (isNaN(time)) {return "0:00";}
   const minutes = Math.floor(time / 60);
   let seconds = Math.floor(time % 60);
 
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-
+  if (seconds < 10) { seconds = "0" + seconds;}
   return minutes + ":" + seconds;
 }
 
@@ -127,7 +112,17 @@ function loadTrack(trackIndex) {
   moodName.textContent = selectedTrack.mood;
   moodDescription.textContent = selectedTrack.description;
 
-  // Remove the old theme before adding the new one
+// Remove the old theme before adding the new one
+// I use classList to remove the previous colour theme and add the
+// theme for the newly selected track. This lets the page background
+// change when the mood changes.
+// I also reset the progress bar and time display when a new track
+// loads, so the player starts from a clear state.
+// Sources:
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+// https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+
   document.body.classList.remove(
     "morning-theme",
     "study-theme",
@@ -135,7 +130,6 @@ function loadTrack(trackIndex) {
   );
 
   document.body.classList.add(selectedTrack.theme);
-
   progressFill.style.width = "0%";
   currentTimeText.textContent = "0:00";
   durationText.textContent = "0:00";
