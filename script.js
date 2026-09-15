@@ -387,3 +387,30 @@ audio.addEventListener("ended", function () {
 
 // Set the starting volume
 audio.volume = volumeSlider.value;
+
+// timer
+
+const timer = document.getElementById ("timer")
+
+let isRunning = false
+let time = 100
+
+timer.addEventListener ('click', () => {
+  if (!isRunning) {
+    isRunning = true
+    requestAnimationFrame (timerFrame)
+  }
+  else {
+    isRunning = false
+  }
+})
+
+function timerFrame (ms) {
+  const secondsElapsed = Math.floor (ms / 1000)
+  timer.innerText = time - secondsElapsed
+  document.body.style.background = `linear-gradient(${ ms / 10 }deg,#ffe2cf,#ef9aab,#fff0a9)`  
+  if (isRunning) {
+    requestAnimationFrame (timerFrame)
+  }
+}
+
