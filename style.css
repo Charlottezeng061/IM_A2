@@ -1,10 +1,7 @@
-/* I used cream, peach and muted colours feel calmer than a commercial music app.
-   CSS variables change each atmosphere while the familiar layout stays consistent. */
-
-/* font styles */
-/* I used Arial for body text and controls because it is simple and easy to read.
-  Georgia gives the headings a warmer feeling. The two fonts also create a clear
-  difference between headings and supporting information. */
+/* Font styles
+I used Arial for body text and controls because it is simple and easy to read.
+Georgia is used for headings and the logo to create a warmer and softer feeling.
+Using two fonts also creates a clear difference between headings and supporting text. */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -45,6 +42,9 @@ input {
 
 
 /* basic page styles */
+/* box-sizing keeps padding and borders inside the element's set width.
+The body fills at least the full screen height and the background colour
+is later changed by JavaScript for each music atmosphere. */
 
 * {
   box-sizing: border-box;
@@ -69,10 +69,10 @@ input {
 }
 
 
-/* Each body class belongs to one music atmosphere. JavaScript changes the class
-  when a track is selected. I kept the same gradient direction so the colours
-  change while the website still feels connected.
-  Source: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient */
+/* Each body class belongs to one music atmosphere.
+JavaScript changes the class when a new track is selected.
+The classes also change the text colour so it stays readable,
+especially for the darker Rainy Night theme. */
 
 body.morning-theme {
   color: #3f392d;
@@ -165,12 +165,35 @@ button {
   cursor: pointer;
 }
 
+/* Timer */
+/* Flexbox keeps the minus button, time, plus button and start button in one row.
+The buttons use a transparent background so the timer stays simple and does not
+compete with the music player controls. */
+
+.timer-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-controls button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#timer {
+  min-width: 55px;
+  text-align: center;
+}
+
+/* The Random Mood button uses a soft muted colour to match the calm visual style
+while still standing out as the main extra interaction. */
 .random-button {
   margin-top: 20px;
   color: white;
   background-color: #bb9281;
 }
-
 
 /* player */
 /* The light player background keeps the controls readable over each gradient.
@@ -211,8 +234,9 @@ body.night-theme .media-player {
   cursor: pointer;
 }
 
-/* JavaScript changes this width while audio plays. This gives users immediate
-   feedback about their position in the track. */
+/* The progress bar shows the current position of the audio.
+JavaScript changes the width of progress-fill while the music plays,
+so users can see how much of the track has passed. */
 
 #progress-fill {
   display: block;
@@ -258,6 +282,107 @@ body.night-theme .media-player {
   text-align: center;
 }
 
+/* player buttons */
+/* The main controls use Flexbox to keep the previous, play and next buttons
+together in the centre of the player. The play button is larger because
+it is the main control. */
+
+.main-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.play-button {
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  background-color: #bb9281;
+  border-color: #3f392d;
+  border-radius: 50%;
+}
+
+.icon-button,
+.play-button,
+.text-button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.play-button img {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* volume and repeat buttons */
+/* The extra controls are placed below the main playback controls.
+Grid keeps mute on the left, volume near the centre and repeat on the right. */
+
+.text-button {
+  width: auto;
+  height: 36px;
+  padding: 0 12px;
+  background-color: transparent;
+  border-radius: 20px;
+  gap: 6px;
+}
+
+.text-button img {
+    width: 18px;
+  height: 18px;
+}
+
+.text-button span {
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+/*hover*/
+nav a:hover {
+  text-decoration: underline;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Player button hover */
+/* Hover feedback makes the interactive buttons easier to recognise.
+The soft peach colour matches the rest of the interface. */
+
+#previous-button:hover,
+#next-button:hover,
+#mute-button:hover,
+#repeat-button:hover {
+  background-color: #e7b8ae;
+}
+
+/* Use an attribute selector to show when mute or repeat is active.
+Source: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors */
+#mute-button[aria-pressed="true"],
+#repeat-button[aria-pressed="true"] {
+  background-color: #e7b8ae;
+}
+ 
+
+
 /* footer */
 /* The maintenance credit stays on the left and sources stay on the right. The
   transparent colour lets the current mood remain visible behind the footer.
@@ -273,9 +398,10 @@ footer {
   gap: 40px;
 
   color: #3f392d;
-  background-color: rgba(255, 255, 255, 0.16);
-  border-top: 1px solid rgba(80, 70, 60, 0.3);
+  background-color: transparent;
+  border-top: 1px solid #50463c4d;
 }
+
 .maintained-by {
   margin: 0;
   line-height: 1.8;
@@ -341,115 +467,4 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
     margin-left: 0;
   }
   
-}
-
-/* player buttons */
-
-.main-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.icon-button {
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  background-color: transparent;
-  border-radius: 50%;
-}
-
-.play-button {
-  width: 54px;
-  height: 54px;
-  padding: 0;
-  background-color: #bb9281;
-  border-color: #3f392d;
-  border-radius: 50%;
-}
-
-.icon-button,
-.play-button,
-.text-button {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.icon-button img {
-  width: 20px;
-  height: 20px;
-}
-
-.play-button img {
-  width: 22px;
-  height: 22px;
-}
-
-
-/* volume and repeat buttons */
-
-.text-button {
-  width: auto;
-  height: 36px;
-  padding: 0 12px;
-  background-color: transparent;
-  border-radius: 20px;
-  gap: 6px;
-}
-
-.text-button img {
-    width: 18px;
-  height: 18px;
-}
-
-.text-button span {
-  white-space: nowrap;
-  font-size: 13px;
-}
-
-/*hover*/
-nav a:hover {
-  text-decoration: underline;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-/* Player button hover */
-#previous-button:hover,
-#next-button:hover,
-#mute-button:hover,
-#repeat-button:hover {
-  background-color: #e7b8ae;
-}
-
-/* Use an attribute selector to show when mute or repeat is active.
-Source: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors */
-#mute-button[aria-pressed="true"],
-#repeat-button[aria-pressed="true"] {
-  background-color: #e7b8ae;
-}
-
-
-
-/* Timer */
-.timer-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.timer-controls button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-#timer {
-  min-width: 55px;
-  text-align: center;
 }
