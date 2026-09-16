@@ -168,7 +168,7 @@ button {
 .random-button {
   margin-top: 20px;
   color: white;
-  background-color: #c97883;
+  background-color: #bb9281;
 }
 
 
@@ -240,7 +240,7 @@ body.night-theme .media-player {
 }
 
 #volume-slider {
-  accent-color: #9a6b2f;
+  accent-color: #bb9281;
   margin-left: 0;
 }
 
@@ -364,7 +364,7 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   width: 54px;
   height: 54px;
   padding: 0;
-  background-color: #c7a57f;
+  background-color: #bb9281;
   border-color: #3f392d;
   border-radius: 50%;
 }
@@ -419,10 +419,21 @@ button:hover {
   opacity: 0.8;
 }
 
-.icon-button:hover,
-.text-button:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+/* Player button hover */
+#previous-button:hover,
+#next-button:hover,
+#mute-button:hover,
+#repeat-button:hover {
+  background-color: #e7b8ae;
 }
+
+/* Use an attribute selector to show when mute or repeat is active.
+Source: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors */
+#mute-button[aria-pressed="true"],
+#repeat-button[aria-pressed="true"] {
+  background-color: #e7b8ae;
+}
+
 
 
 /* Timer */
