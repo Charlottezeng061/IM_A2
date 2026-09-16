@@ -46,12 +46,13 @@
       <!-- Navigation Section -->
       <nav>
        <ul>
-         <li>
-          <div id="timer">0m00s</div>
-         </li>
-         <li>
-          <a href="#home">Home</a>
-         </li>
+         <li class="timer-controls">
+             <button id="minus">−</button>
+             <div id="timer">25:00</div>
+             <button id="plus">+</button>
+             <button id="timer-button">START</button>
+        </li>
+       </ul>
      </nav>
     </header>
 
@@ -103,7 +104,7 @@
            track is selected. This means the same player controls can be used
            for every track.
            -->
-          <audio id="audio-player" src="assets/audio/slow morning.mp3" preload="metadata"></audio>
+          <audio id="audio-player" src="https://archive.org/download/slow-morning/slow%20morning.mp3" preload="metadata"></audio>
 
           <!-- Track time -->
           <div class="time-row">

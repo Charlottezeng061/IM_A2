@@ -13,17 +13,17 @@
 // the three music tracks
 const tracks = [
   { mood: "Warm Morning",
-    file: "slow morning.mp3",
+    file: "https://archive.org/download/slow-morning/slow%20morning.mp3",
     description: "Ease into the day with soft and unhurried sounds.",
     theme: "morning-theme"},
 
   { mood: "Cozy Study",
-    file: "lofi study.mp3",
+    file: "https://archive.org/download/lofi-study_202609/lofi%20study.mp3 ",
     description: "Gentle beats to help you read, write and stay focused.",
     theme: "study-theme"},
 
   { mood: "Rainy Night",
-    file: "lofi night.mp3",
+    file: "https://archive.org/download/lofi-night/lofi%20night.mp3 ",
     description: "A calm evening atmosphere for late-night study.",
     theme: "night-theme"}
 ];
@@ -94,7 +94,6 @@ function formatTime(time) {
   if (seconds < 10) { seconds = "0" + seconds;}
   return minutes + ":" + seconds;
 }
-
 
 
 // Load a selected track
@@ -202,7 +201,6 @@ function randomAtmosphere() {
     "."
   );
 }
-
 
 // Play button
 playButton.addEventListener("click", togglePlay);
@@ -389,28 +387,108 @@ audio.addEventListener("ended", function () {
 audio.volume = volumeSlider.value;
 
 // timer
-
-const timer = document.getElementById ("timer")
+const timer = document.getElementById("timer");
+const minusButton = document.getElementById("minus");
+const plusButton = document.getElementById("plus");
+const timerButton = document.getElementById("timer-button");
 
 let isRunning = false
-let time = 100
+let time = 25 * 60
+let startTime = 0
 
-timer.addEventListener ('click', () => {
+// Start / Pause
+timerButton.addEventListener("click", () => {
+
   if (!isRunning) {
-    isRunning = true
-    requestAnimationFrame (timerFrame)
+    isRunning = true;
+    startTime = 0;
+    timerButton.innerText = "PAUSE";
+    requestAnimationFrame(timerFrame);
   }
-  else {
-    isRunning = false
-  }
-})
 
-function timerFrame (ms) {
-  const secondsElapsed = Math.floor (ms / 1000)
-  timer.innerText = time - secondsElapsed
-  document.body.style.background = `linear-gradient(${ ms / 10 }deg,#ffe2cf,#ef9aab,#fff0a9)`  
-  if (isRunning) {
-    requestAnimationFrame (timerFrame)
+  else {
+    isRunning = false;
+    timerButton.innerText = "START";
   }
+
+});
+
+// Minus 5 minutes
+minusButton.addEventListener("click", () => {
+
+  if (!isRunning && time > 5 * 60) {
+    time = time - 5 * 60;
+    showTime();
+  }
+
+});
+
+
+// Plus 5 minutes
+plusButton.addEventListener("click", () => {
+
+  if (!isRunning) {
+    time = time + 5 * 60;
+    showTime();
+  }
+
+});
+
+// Show minutes and seconds
+function showTime() {
+
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
+  timer.innerText = minutes + ":" + seconds;
+
 }
+
+
+// Timer animation
+function timerFrame(ms) {
+
+  if (startTime === 0) {
+    startTime = ms;
+  }
+
+  const secondsElapsed = Math.floor((ms - startTime) / 1000);
+  const timeLeft = time - secondsElapsed;
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  timer.innerText = minutes + ":" + seconds;
+
+  if (isRunning && timeLeft > 0) {
+    requestAnimationFrame(timerFrame);
+  }
+
+}
+
+// Moving gradient background
+function backgroundFrame(ms) {
+
+  const angle = ms / 100;
+
+   if (document.body.classList.contains("morning-theme")) {
+    document.body.style.background =
+      `linear-gradient(${angle}deg, #f7d9c8, #f3c7bd, #f6dfc5, #f5eadb)`;
+  }
+
+ if (document.body.classList.contains("study-theme")) {
+  document.body.style.background =
+    `linear-gradient(${angle}deg, #8f9873, #c2c59e, #e6ddcdff, #f2e5cf)`;
+}
+
+if (document.body.classList.contains("night-theme")) {
+  document.body.style.background =
+    `linear-gradient(${angle}deg, #24212b 0%, #352d46 35%, #51416b 75%, #b56f70 100%)`;
+}
+
+  requestAnimationFrame(backgroundFrame);
+}
+
+requestAnimationFrame(backgroundFrame);
+
 

@@ -69,7 +69,6 @@ input {
 }
 
 
-/* different music backgrounds */
 /* Each body class belongs to one music atmosphere. JavaScript changes the class
   when a track is selected. I kept the same gradient direction so the colours
   change while the website still feels connected.
@@ -77,32 +76,14 @@ input {
 
 body.morning-theme {
   color: #3f392d;
-  background: linear-gradient(
-    135deg,
-    #ffe2cf,
-    #ef9aab,
-    #fff0a9
-  );
 }
 
 body.study-theme {
   color: #393c31;
-  background: linear-gradient(
-    135deg,
-    #f4eedc,
-    #b7b99a,
-    #8e9a78
-  );
 }
 
 body.night-theme {
   color: #fff4dc;
-  background: linear-gradient(
-    135deg,
-    #172a4b,
-    #765b7a,
-    #d783ac
-  );
 }
 
 /* header */
@@ -130,7 +111,8 @@ body.night-theme {
 
 nav ul {
   display: flex;
-  gap: 24px;
+  justify-content: center;
+  align-items: center;
 
   margin: 0;
   padding: 0;
@@ -247,15 +229,27 @@ body.night-theme .media-player {
 }
 
 .extra-controls {
-   margin-top: 34px;
+  margin-top: 34px;
   padding-top: 24px;
-  gap: 8px;
   border-top: 1px solid #a99369;
+
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  align-items: center;
+  gap: 10px;
 }
 
 #volume-slider {
   accent-color: #9a6b2f;
-  margin-left: -150px;
+  margin-left: 0;
+}
+
+#mute-button {
+  justify-self: start;
+}
+
+#repeat-button {
+  justify-self: end;
 }
 
 .player-feedback {
@@ -428,4 +422,23 @@ button:hover {
 .icon-button:hover,
 .text-button:hover {
   background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* Timer */
+.timer-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-controls button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#timer {
+  min-width: 55px;
+  text-align: center;
 }
