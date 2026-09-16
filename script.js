@@ -18,12 +18,12 @@ const tracks = [
     theme: "morning-theme"},
 
   { mood: "Cozy Study",
-    file: "https://archive.org/download/lofi-study_202609/lofi%20study.mp3 ",
+    file: "https://archive.org/download/lofi-study_202609/lofi%20study.mp3",
     description: "Gentle beats to help you read, write and stay focused.",
     theme: "study-theme"},
 
   { mood: "Rainy Night",
-    file: "https://archive.org/download/lofi-night/lofi%20night.mp3 ",
+    file: "https://archive.org/download/lofi-night/lofi%20night.mp3",
     description: "A calm evening atmosphere for late-night study.",
     theme: "night-theme"}
 ];
@@ -106,7 +106,7 @@ function loadTrack(trackIndex) {
 
   const selectedTrack = tracks[currentTrack];
 
-  audio.src = "assets/audio/" + selectedTrack.file;
+  audio.src = selectedTrack.file; 
 
   moodName.textContent = selectedTrack.mood;
   moodDescription.textContent = selectedTrack.description;
