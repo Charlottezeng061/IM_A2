@@ -123,9 +123,11 @@ nav ul {
 /* The hero fills most of the first screen. Grid gives more room to the player
   because listening is the main activity. It becomes one column on mobile. */
 
+/* Keep the main content tall on desktop so the player fills most of the screen. */
 .hero {
   width: 90%;
   max-width: 1300px;
+  min-height: 80vh;
   margin: auto;
   padding: 60px 0;
 
