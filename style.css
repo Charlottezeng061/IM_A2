@@ -463,9 +463,9 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
 .hero {
   width: 90%;
   min-height: auto;
-  padding: 45px 0;
+  padding: 40px 0;
   grid-template-columns: 1fr;
-  gap: 35px;
+  gap: 30px;
 }
 .hero-copy {
  margin-left: 0;
@@ -483,7 +483,19 @@ h1 {
 /* Player */
 .media-player {
   min-height: 0;
-  padding: 30px 25px;
+  padding: 24px 25px;
+}
+.media-player h2 {
+  margin-bottom: 20px;
+}
+.track-description {
+  margin-bottom: 20px;
+}
+.main-controls {
+  margin: 22px 0;
+}
+.extra-controls {
+  margin-top: 20px;
 }
 
 /* Footer */
