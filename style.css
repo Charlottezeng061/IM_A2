@@ -175,6 +175,16 @@ compete with the music player controls. */
   text-align: center;
 }
 
+#reset-timer {
+  margin-left: 4px;
+  padding: 0;
+}
+
+#reset-timer img {
+  width: 18px;
+  height: 18px;
+}
+
 /* The Random Mood button uses a soft muted colour to match the calm visual style
 while still standing out as the main extra interaction. */
 .random-button {

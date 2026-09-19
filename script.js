@@ -9,8 +9,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/src
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
 
-
-// the three music tracks
+///// the three music tracks/////
 const tracks = [
   { mood: "Warm Morning",
     file: "https://archive.org/download/slow-morning/slow%20morning.mp3",
@@ -29,48 +28,30 @@ const tracks = [
 ];
 
 
-// Find the HTML elements
+// Find the HTML elements//
 const audio = document.querySelector("#audio-player");
-
 const moodName = document.querySelector("#mood-name");
-
 const moodDescription = document.querySelector("#mood-description");
-
 const playButton = document.querySelector("#play-button");
-
 const playIcon = document.querySelector("#play-icon");
-
 const previousButton = document.querySelector("#previous-button");
-
 const nextButton = document.querySelector("#next-button");
-
 const muteButton = document.querySelector("#mute-button");
-
 const muteIcon = document.querySelector("#mute-icon");
-
 const repeatButton = document.querySelector("#repeat-button");
-
 const volumeSlider = document.querySelector("#volume-slider");
-
 const progressBar = document.querySelector("#progress-bar");
-
 const progressFill = document.querySelector("#progress-fill");
-
 const currentTimeText = document.querySelector("#current-time");
-
 const durationText = document.querySelector("#duration");
-
 const randomButton = document.querySelector("#random-button");
-
 const playerFeedback = document.querySelector("#player-feedback");
-
 
 // The player starts with the first track
 let currentTrack = 0;
 let repeatIsOn = false;
 
-
-// Show a small message under the player
+// Show a small message under the player//
 // I added this feedback because an icon button does not always show whether an action worked.
 // Changing one short sentence confirms play, mute and repeat actions without adding a pop-up 
 // that would interrupt the calm experience.
@@ -93,8 +74,7 @@ function formatTime(time) {
   return minutes + ":" + seconds;
 }
 
-
-// Load a selected track
+// Load a selected track//
 // This function is reused by the mood cards, next and previous controls and the
 // random feature. It changes the audio source, visible information and body class
 // together, so the sound and colour theme always match.
@@ -109,7 +89,7 @@ function loadTrack(trackIndex) {
   moodName.textContent = selectedTrack.mood;
   moodDescription.textContent = selectedTrack.description;
 
-// Remove the old theme before adding the new one
+// Remove the old theme before adding the new one//
 // I use classList to remove the previous colour theme and add the
 // theme for the newly selected track. This lets the page background
 // change when the mood changes.
@@ -131,7 +111,6 @@ function loadTrack(trackIndex) {
   currentTimeText.textContent = "0:00";
   durationText.textContent = "0:00";
 }
-
 
 // Play or pause the music
 function togglePlay() {
@@ -159,27 +138,23 @@ function nextTrack() {
   showFeedback("Playing the next atmosphere.");
 }
 
-
 // Go to the previous track
 function previousTrack() {
   currentTrack = currentTrack - 1;
-
   if (currentTrack < 0) {
     currentTrack = tracks.length - 1;
   }
-
   loadTrack(currentTrack);
   audio.play();
-
   showFeedback("Playing the previous atmosphere.");
 }
 
-
-// Choose a random atmosphere
+/////Choose a random atmosphere/////
 // I chose random atmosphere as the extra feature because users studying or
 // relaxing may not want to spend time choosing a track. Math.random creates a
 // random value and Math.floor changes it into an array position.
 // Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
 function randomAtmosphere() {
   let randomTrack =
     Math.floor(Math.random() * tracks.length);
@@ -203,11 +178,9 @@ function randomAtmosphere() {
 // Play button
 playButton.addEventListener("click", togglePlay);
 
-
 // Previous and next buttons
 previousButton.addEventListener("click", previousTrack);
 nextButton.addEventListener("click", nextTrack);
-
 
 // Random button
 randomButton.addEventListener(
@@ -215,8 +188,7 @@ randomButton.addEventListener(
   randomAtmosphere
 );
 
-
-// Change the play icon when music starts
+// Change the play icon when music starts//
 // The audio play and pause events update both the icon and the is-playing class.
 // This gives visual feedback and lets the CSS background move with the music.
 // Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play_event
@@ -261,8 +233,7 @@ muteButton.addEventListener("click", function () {
   muteButton.setAttribute("aria-pressed", audio.muted);
 });
 
-
-// Change the volume
+/// Change the volume///
 // The range input gives a value between 0 and 1, which matches the audio volume
 // property. Moving the slider also turns mute off so the new volume can be heard.
 // Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volume
@@ -287,7 +258,7 @@ volumeSlider.addEventListener("input", function () {
 });
 
 
-// Turn repeat on and off
+// Turn repeat on and off///
 // Sources:
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loop
 // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed
@@ -308,14 +279,12 @@ repeatButton.addEventListener("click", function () {
   }
 });
 
-
 // Get the duration when a track loads
 audio.addEventListener("loadedmetadata", function () {
   durationText.textContent = formatTime(audio.duration);
 });
 
-
-// Update the time and progress bar
+/// Update the time and progress bar ///
 // The timeupdate event runs while the track plays. I divide currentTime by the
 // full duration to calculate a percentage, then use it as the fill width.
 // Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/timeupdate_event
@@ -336,7 +305,6 @@ audio.addEventListener("timeupdate", function () {
     );
   }
 });
-
 
 // Click the progress bar to move through the track
 /*
@@ -380,94 +348,100 @@ audio.addEventListener("ended", function () {
   }
 });
 
-
 // Set the starting volume
 audio.volume = volumeSlider.value;
 
-// timer
+
+///////// Timer///////////
 const timer = document.getElementById("timer");
 const minusButton = document.getElementById("minus");
 const plusButton = document.getElementById("plus");
 const timerButton = document.getElementById("timer-button");
+const resetTimerButton = document.getElementById("reset-timer");
 
-let isRunning = false
-let time = 25 * 60
-let startTime = 0
+let isRunning = false;
+let time = 25 * 60;
+let setTime = 25 * 60;
+let startTime = 0;
 
 // Start / Pause
 timerButton.addEventListener("click", () => {
-
   if (!isRunning) {
     isRunning = true;
     startTime = 0;
     timerButton.innerText = "PAUSE";
     requestAnimationFrame(timerFrame);
   }
-
   else {
     isRunning = false;
     timerButton.innerText = "START";
   }
-
 });
 
 // Minus 5 minutes
 minusButton.addEventListener("click", () => {
-
   if (!isRunning && time > 5 * 60) {
     time = time - 5 * 60;
+    setTime = time;
     showTime();
   }
-
 });
 
 
 // Plus 5 minutes
 plusButton.addEventListener("click", () => {
-
   if (!isRunning) {
     time = time + 5 * 60;
+    setTime = time;
     showTime();
   }
-
 });
 
 // Show minutes and seconds
 function showTime() {
-
   const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-
+  let seconds = time % 60;
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
   timer.innerText = minutes + ":" + seconds;
-
 }
 
+// Reset timer
+resetTimerButton.addEventListener("click", () => {
+  isRunning = false;
+  time = setTime;
+  startTime = 0;
+  timerButton.innerText = "START";
+  showTime();
+});
 
 // Timer animation
 function timerFrame(ms) {
-
-  if (startTime === 0) {
+ if (startTime === 0) {
     startTime = ms;
   }
-
-  const secondsElapsed = Math.floor((ms - startTime) / 1000);
-  const timeLeft = time - secondsElapsed;
-
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-
-  timer.innerText = minutes + ":" + seconds;
-
-  if (isRunning && timeLeft > 0) {
+const secondsElapsed = Math.floor((ms - startTime) / 1000);
+const timeLeft = time - secondsElapsed;
+const minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
+ if (seconds < 10) {
+  seconds = "0" + seconds;
+}
+timer.innerText = minutes + ":" + seconds;
+if (isRunning && timeLeft > 0) {
     requestAnimationFrame(timerFrame);
   }
-
 }
 
-// Moving gradient background
-function backgroundFrame(ms) {
 
-  const angle = ms / 100;
+///// Moving gradient background ////////
+function backgroundFrame(ms) {
+const angle = ms / 100;
+
+// Move the background when music or timer is running
+// I use OR (||) because either one can start the background movement.
+  if (!audio.paused || isRunning) {
 
    if (document.body.classList.contains("morning-theme")) {
     document.body.style.background =
@@ -483,10 +457,11 @@ if (document.body.classList.contains("night-theme")) {
   document.body.style.background =
     `linear-gradient(${angle}deg, #24212b 0%, #352d46 35%, #51416b 75%, #b56f70 100%)`;
 }
-
+}
+// Start the background animation
   requestAnimationFrame(backgroundFrame);
 }
-
+// Request the next animation frame
 requestAnimationFrame(backgroundFrame);
 
 
