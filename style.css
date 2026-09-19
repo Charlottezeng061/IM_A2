@@ -174,6 +174,7 @@ compete with the music player controls. */
   border: none;
   background: none;
   cursor: pointer;
+  color: inherit;
 }
 
 #timer {
@@ -421,6 +422,7 @@ body.night-theme footer {
   background-color: rgba(23, 42, 75, 0.3);
 }
 
+
 /* mobile layout */
 /* I used max-width: 700px to apply a different layout when the browser
 becomes narrow. The hero changes from two columns to one column,
@@ -429,28 +431,57 @@ player controls readable on mobile screens.
 Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries */
 
 @media (max-width: 700px) {
-  .hero {
-    grid-template-columns: 1fr;
+
+  /* Header */
+   .site-header {
+    width: 90%;
+    padding: 20px 0;
+    align-items: center;
+  }
+  .logo {
+    font-size: 22px;
+  }
+  .timer-controls {
+    gap: 6px;
+  }
+  .timer-controls button {
+    color: inherit;
+  }
+  #timer {
+    min-width: 50px;
   }
 
+  /* Hero */
+  .hero {
+    width: 90%;
+    min-height: auto;
+    padding: 55px 0;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .hero-copy {
+    margin-left: 0;
+  }
   h1 {
     font-size: 42px;
   }
-
-  footer {
-    flex-direction: column;
+  .intro {
+    max-width: 100%;
   }
+  .random-button {
+    margin-top: 16px;
+  }
+
+  /* Player */
   .media-player {
     min-height: 0;
-    padding: 25px;
+    padding: 30px 25px;
   }
 
-  .extra-controls {
-    flex-wrap: wrap;
-    justify-content: center;
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding: 45px 8%;
+    flex-direction: column;
   }
-  #volume-slider {
-    margin-left: 0;
-  }
-  
 }
