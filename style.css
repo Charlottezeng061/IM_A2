@@ -484,7 +484,7 @@ h1 {
 /* Player */
 .media-player {
   min-height: 0;
-  padding: 25px;
+  padding: 15px 25px;
 }
 .media-player h2 {
   margin-bottom: 20px;
