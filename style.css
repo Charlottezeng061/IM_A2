@@ -449,6 +449,7 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
 }
 .timer-controls button {
   padding: 4px;
+  font-size: 14px;
 }
 #timer {
   min-width: 45px;
@@ -462,9 +463,9 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
 .hero {
   width: 90%;
   min-height: auto;
-  padding: 55px 0;
+  padding: 45px 0;
   grid-template-columns: 1fr;
-  gap: 50px;
+  gap: 35px;
 }
 .hero-copy {
  margin-left: 0;
