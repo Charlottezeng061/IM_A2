@@ -465,25 +465,26 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   min-height: auto;
   padding: 40px 0;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 25px;
 }
 .hero-copy {
  margin-left: 0;
 }
 h1 {
   font-size: 42px;
+  margin-bottom: 18px;
 }
 .intro {
-  max-width: 100%;
+  margin-bottom: 18px;
 }
 .random-button {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 /* Player */
 .media-player {
   min-height: 0;
-  padding: 24px 25px;
+  padding: 25px;
 }
 .media-player h2 {
   margin-bottom: 20px;
