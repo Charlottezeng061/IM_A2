@@ -433,56 +433,62 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
 
 @media (max-width: 700px) {
 
-  /* Header */
-   .site-header {
-    width: 90%;
-    padding: 20px 0;
-    align-items: center;
-  }
-  .logo {
-    font-size: 22px;
-  }
-  .timer-controls {
-    gap: 6px;
-  }
-  .timer-controls button {
-    color: inherit;
-  }
-  #timer {
-    min-width: 50px;
-  }
+/* Header */
+.site-header {
+  width: 90%;
+  padding: 20px 0;
+  align-items: center;
+}
+.logo {
+  font-size: 20px;
+}
 
-  /* Hero */
-  .hero {
-    width: 90%;
-    min-height: auto;
-    padding: 55px 0;
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  .hero-copy {
-    margin-left: 0;
-  }
-  h1 {
-    font-size: 42px;
-  }
-  .intro {
-    max-width: 100%;
-  }
-  .random-button {
-    margin-top: 16px;
-  }
+/* Make the timer controls fit on smaller screens. */
+.timer-controls {
+  gap: 4px;
+}
+.timer-controls button {
+  padding: 4px;
+}
+#timer {
+  min-width: 45px;
+}
+#reset-timer img {
+  width: 16px;
+  height: 16px;
+}
 
-  /* Player */
-  .media-player {
-    min-height: 0;
-    padding: 30px 25px;
-  }
+/* Hero */
+.hero {
+  width: 90%;
+  min-height: auto;
+  padding: 55px 0;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
+.hero-copy {
+ margin-left: 0;
+}
+h1 {
+  font-size: 42px;
+}
+.intro {
+  max-width: 100%;
+}
+.random-button {
+  margin-top: 16px;
+}
 
-  /* Footer */
-  footer {
-    margin-top: 60px;
-    padding: 45px 8%;
-    flex-direction: column;
-  }
+/* Player */
+.media-player {
+  min-height: 0;
+  padding: 30px 25px;
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 45px 8%;
+  flex-direction: column;
+}
 }
