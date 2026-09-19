@@ -40,7 +40,6 @@ input {
   margin-bottom: 6px;
 }
 
-
 /* basic page styles */
 /* box-sizing keeps padding and borders inside the element's set width.
 The body fills at least the full screen height and the background colour
@@ -62,12 +61,6 @@ body {
     #fff0a9
   );
 }
-
-button,
-input {
-  font: inherit;
-}
-
 
 /* Each body class belongs to one music atmosphere.
 JavaScript changes the class when a new track is selected.
@@ -117,11 +110,6 @@ nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-nav a {
-  color: inherit;
-  text-decoration: none;
 }
 
 
@@ -246,12 +234,6 @@ so users can see how much of the track has passed. */
   border-radius: 10px;
 }
 
-.main-controls {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
 .extra-controls {
   margin-top: 34px;
   padding-top: 24px;
@@ -349,15 +331,7 @@ Grid keeps mute on the left, volume near the centre and repeat on the right. */
   height: 18px;
 }
 
-.text-button span {
-  white-space: nowrap;
-  font-size: 13px;
-}
-
 /*hover*/
-nav a:hover {
-  text-decoration: underline;
-}
 
 button:hover {
   opacity: 0.8;
@@ -432,15 +406,11 @@ body.night-theme footer {
 }
 
 /* mobile layout */
-/*
-I learned how to use media queries from the MDN media query tutorial.
-I used max-width: 700px to apply a different layout when the browser
-becomes narrow. The hero and mood cards change from multiple columns
-to one column, and the footer content stacks vertically. This keeps
-the text and player controls readable on mobile screens.
-
-Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries
-*/
+/* I used max-width: 700px to apply a different layout when the browser
+becomes narrow. The hero changes from two columns to one column,
+and the footer content stacks vertically. This keeps the text and
+player controls readable on mobile screens. 
+Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries */
 
 @media (max-width: 700px) {
   .hero {

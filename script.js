@@ -64,8 +64,6 @@ const randomButton = document.querySelector("#random-button");
 
 const playerFeedback = document.querySelector("#player-feedback");
 
-const moodCards = document.querySelectorAll(".mood-card");
-
 
 // The player starts with the first track
 let currentTrack = 0;
