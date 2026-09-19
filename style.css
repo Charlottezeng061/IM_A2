@@ -425,10 +425,10 @@ body.night-theme footer {
 
 
 /* mobile layout */
-/* I used max-width: 700px to apply a different layout when the browser
-becomes narrow. The hero changes from two columns to one column,
-and the footer content stacks vertically. This keeps the text and
-player controls readable on mobile screens. 
+/* Make the player more compact on mobile screens.
+I reduced the spacing between the track information, progress bar,
+main controls and extra controls so the player takes up less vertical
+space while keeping the buttons large enough to use easily.
 Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Media_queries */
 
 @media (max-width: 700px) {
