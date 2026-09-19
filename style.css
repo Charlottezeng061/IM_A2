@@ -487,16 +487,16 @@ h1 {
   padding: 15px 25px;
 }
 .media-player h2 {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 .track-description {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .main-controls {
-  margin: 22px 0;
+  margin: 15px 0;
 }
 .extra-controls {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 /* Footer */
