@@ -51,13 +51,10 @@ const playerFeedback = document.querySelector("#player-feedback");
 let currentTrack = 0;
 let repeatIsOn = false;
 
-// Show a small message under the player//
-// I added this feedback because an icon button does not always show whether an action worked.
-// Changing one short sentence confirms play, mute and repeat actions without adding a pop-up 
-// that would interrupt the calm experience.
-// The HTML creates the place for the message, CSS controls its appearance, and this function changes
-// its words. Each player action calls showFeedback with a different message. I used textContent because
-// the feedback is plain text.
+// Show a small feedback message under the player.
+// I use short messages to confirm actions without adding pop-ups or extra panels. 
+// This keeps the interface simple and avoids interrupting the calm experience 
+// while the user is studying or relaxing.
 // Source: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
 
 function showFeedback(message) {
@@ -74,10 +71,10 @@ function formatTime(time) {
   return minutes + ":" + seconds;
 }
 
-// Load a selected track//
-// This function is reused by the mood cards, next and previous controls and the
-// random feature. It changes the audio source, visible information and body class
-// together, so the sound and colour theme always match.
+// Load the selected music track and its matching mood.
+// Keeping the music, description and colour theme together makes each
+// atmosphere feel consistent. The same function is reused by the next,
+// previous and random controls to keep the code simple.
 
 function loadTrack(trackIndex) {
   currentTrack = trackIndex;
@@ -112,7 +109,10 @@ function loadTrack(trackIndex) {
   durationText.textContent = "0:00";
 }
 
-// Play or pause the music
+// Play or pause the current music
+// One button controls both actions so the player stays simple and familiar.
+// The user can start or stop the relaxing sound without extra controls.
+
 function togglePlay() {
   if (audio.paused) {
     audio.play();
@@ -124,7 +124,10 @@ function togglePlay() {
 }
 
 
-// Go to the next track
+// Move to the next atmosphere.
+// The tracks loop back to the beginning so users can keep listening
+// without reaching a dead end in the player.
+
 function nextTrack() {
   currentTrack = currentTrack + 1;
 
@@ -138,7 +141,10 @@ function nextTrack() {
   showFeedback("Playing the next atmosphere.");
 }
 
-// Go to the previous track
+// Move to the previous atmosphere.
+// This gives users a simple way to explore the three moods without
+// needing a separate list of tracks on the page.
+
 function previousTrack() {
   currentTrack = currentTrack - 1;
   if (currentTrack < 0) {
@@ -149,10 +155,12 @@ function previousTrack() {
   showFeedback("Playing the previous atmosphere.");
 }
 
-/////Choose a random atmosphere/////
-// I chose random atmosphere as the extra feature because users studying or
-// relaxing may not want to spend time choosing a track. Math.random creates a
-// random value and Math.floor changes it into an array position.
+// Choose a random atmosphere.
+// I added Random Mood because users who are studying or relaxing may
+// not want to spend time deciding what to play. One click chooses a
+// different mood, making the experience feel easy and spontaneous.
+// Math.random creates a random value and Math.floor changes it into
+// an array position.
 // Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 function randomAtmosphere() {
@@ -364,7 +372,10 @@ let time = 25 * 60;
 let setTime = 25 * 60;
 let startTime = 0;
 
-// Start / Pause
+// Start or pause the timer.
+// I use one button for both actions to reduce the number of controls
+// and make the timer easy to understand at a glance.
+
 timerButton.addEventListener("click", () => {
   if (!isRunning) {
     isRunning = true;
@@ -388,7 +399,10 @@ minusButton.addEventListener("click", () => {
 });
 
 
-// Plus 5 minutes
+// Plus five minutes
+// The time can only be changed while the timer is stopped, which keeps
+// the behaviour predictable while a study or relaxation session is running.
+
 plusButton.addEventListener("click", () => {
   if (!isRunning) {
     time = time + 5 * 60;
@@ -397,7 +411,10 @@ plusButton.addEventListener("click", () => {
   }
 });
 
-// Show minutes and seconds
+// Display the timer as minutes and seconds.
+// A zero is added before single-digit seconds so the time stays
+// consistent and easy to read, for example 24:09 instead of 24:9.
+
 function showTime() {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
@@ -407,7 +424,10 @@ function showTime() {
   timer.innerText = minutes + ":" + seconds;
 }
 
-// Reset timer
+// Reset the timer to the duration selected by the user.
+// This gives users a quick way to restart the same study or relaxation
+// session without setting the time again.
+
 resetTimerButton.addEventListener("click", () => {
   isRunning = false;
   time = setTime;
@@ -416,7 +436,11 @@ resetTimerButton.addEventListener("click", () => {
   showTime();
 });
 
-// Timer animation
+// Update the timer while it is running.
+// requestAnimationFrame gives the function a time value in milliseconds.
+// I calculate how many seconds have passed and subtract them from the
+// selected time to create the countdown.
+
 function timerFrame(ms) {
  if (startTime === 0) {
     startTime = ms;
@@ -435,7 +459,12 @@ if (isRunning && timeLeft > 0) {
 }
 
 
-///// Moving gradient background ////////
+// Slowly move the gradient background.
+// The changing gradient adds gentle movement instead of using a busy
+// animation, helping the page feel calm while the user listens or studies.
+// Each music atmosphere has its own colours so the visual mood also
+// changes with the sound.
+
 function backgroundFrame(ms) {
 const angle = ms / 100;
 
