@@ -103,6 +103,14 @@ body.night-theme {
   border-bottom: 1px solid #50463c66;
 }
 
+/* Place the tagline on the right to balance the logo and timer. */
+.header-tagline {
+  justify-self: end;
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
 .logo {
   color: inherit;
   font-size: 24px;
@@ -466,6 +474,12 @@ Source:https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_l
   padding: 20px 0;
   align-items: center;
 }
+
+/* Hide the tagline on mobile to keep the header simple and avoid crowding. */
+.header-tagline {
+  display: none;
+}
+
 .logo {
   font-size: 20px;
 }
