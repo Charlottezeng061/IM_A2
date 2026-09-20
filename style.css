@@ -95,11 +95,12 @@ body.night-theme {
   margin: auto;
   padding: 24px 0;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  column-gap: 40px;
 
-  border-bottom: 1px solid rgba(80, 70, 60, 0.4);
+  border-bottom: 1px solid #50463c66;
 }
 
 .logo {
@@ -116,6 +117,14 @@ nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.site-header nav {
+  justify-self: center;
 }
 
 
@@ -168,7 +177,8 @@ compete with the music player controls. */
 .timer-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+  font-size: 16px;
 }
 
 .timer-controls button {
@@ -179,8 +189,19 @@ compete with the music player controls. */
 }
 
 #timer {
-  min-width: 55px;
+  min-width: 65px;
   text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#timer-button {
+  font-size: 15px;
+}
+
+#minus,
+#plus {
+  font-size: 18px;
 }
 
 #reset-timer {
@@ -191,6 +212,12 @@ compete with the music player controls. */
 #reset-timer img {
   width: 18px;
   height: 18px;
+}
+
+/* Change the dark icons to light icons for the night theme. */
+body.night-theme #reset-timer img,
+body.night-theme .media-player button img {
+  filter: invert(1);
 }
 
 /* The Random Mood button uses a soft muted colour to match the calm visual style
