@@ -381,11 +381,19 @@ timerButton.addEventListener("click", () => {
     isRunning = true;
     startTime = 0;
     timerButton.innerText = "PAUSE";
+    minusButton.style.display = "none";
+    plusButton.style.display = "none";
     requestAnimationFrame(timerFrame);
   }
   else {
     isRunning = false;
+
     timerButton.innerText = "START";
+    // Hide the plus and minus buttons while the timer is running.
+    // This keeps the timer simple and shows that the time cannot be
+    // changed during a study or relaxation session.
+    minusButton.style.display = "block";
+    plusButton.style.display = "block";
   }
 });
 
